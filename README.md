@@ -1,102 +1,107 @@
 # Webmentions
 
-> A custom tag for Statamic v3
+[According to the W3C](https://www.w3.org/TR/webmention/) Webmentions are an open web standard for conversations and interactions across the web, a powerful building block used for a growing distributed network of peer-to-peer comments, likes, reposts, and other responses across the web.
 
-## What is this?
-
-As per https://webmention.io/,
-
-> webmention.io is an open-source project and hosted service for receiving webmentions and pingbacks on behalf of your indieweb site.
-
-Which is a fancy way of saying after signing up for this service, you can easily add the following snippets to your website in order to collect mentions/pingbacks (be sure to replace `<username>` with your, well, username 😅.
-
-```
-<link rel="webmention" href="https://webmention.io/<username>/webmention" />
-<link rel="pingback" href="https://webmention.io/<username>/xmlrpc" />
-```
-
-Assuming you've done so, this plugin gives to you a `{{ webmentions }}` tag that you can use in your Statamic site to display those collected mentions and pingbacks!
+Popular across the [IndieWeb](https://indieweb.org/Webmention) as a means of enabling cross-site conversations, webmentions allow individuals to inform, and be informed by, other websites about activities and publications on websites and across social media platforms. In practice most people use webmentions in conjunction with services like [webmention.io](https://webmention.io) and [Bridgy](https://brid.gy).
 
 ## Installation
 
+This add-on is for websites built with [Statamic](https://statamic.com).
+
+**Installation** is as normally [recommended by Statamic](https://statamic.dev/extending/addons#installing-an-addon):
+
 ```
-composer require mattrothenberg/webmentions
-```
-
-## Demo 🚀
-
-The sky's the limit when it comes to how you present your Webmention data! Here's a demo of the [example Vue component found in this repo!](mention-list.vue). Beware the component assumes you have [Tailwind](https://tailwindcss.com/) and [`v-tooltip`](https://github.com/Akryum/v-tooltip) installed.
-
-<img alt="Demo" src="https://i.imgur.com/yKVuVsj.gif" width="600" />
-
-## Usage (Antlers)
-
-This addon exposes a new tag called `webmentions`. Use it as follows, making sure to pass a `url` parameter.
-
-```html
-{{webmentions url="https://mattrothenberg.com/"}}
-  {{ if no_results }}
-    <p>No results.</p>
-  {{ else }}      
-    <p>Total: {{mentions|length}}</p>
-    <ul>
-      {{mentions}}
-        <li>
-          {{ url }}
-          {{ author }}
-            {{ name }}
-          {{ /author }}
-        </li>
-      {{/mentions}} 
-    </ul>
-  {{ /if }}
-{{/webmentions}}
+composer require vhbelvadi/webmentions
 ```
 
-## Usage (Vue)
+**Add a link tag** to your website, making sure to update the `<domain.tld>` bit:
 
-If you want to pipe the mentions data to a Vue component, here's how.
-
-```html
-{{ webmentions url="https://sebastiandedeyne.com/"  }}
-  {{ if no_results }}
-    <p>No results.</p>
-  {{ else }}
-    <mention-list :mentions="{{ mentions | json | entities }}"></mention-list>
-  {{/if}}
-{{ /webmentions }}
+```
+<link rel="webmention" href="https://webmention.io/<domain.tld>/webmention" />
 ```
 
+Assuming you have signed up with [webmention.io](https://webmention.io) and added your domain, this tag will work. It is the same tag available directly [from your webmention.io account](https://webmention.io/settings/sites).
 
-## Mentions Schema
+## Templating
 
-Each `mention` object exposes the following attributes that you can access in your template.
+On your statamic site, use the `{{ webmentions }}` tag passing the appropriate URL. A more detailed explanation follows but as a quick example the following tag works on a reused blog post template:
 
-Learn more at [Webmention.io](https://webmention.io/)
+```
+{{ webmentions url={{ current_url}} }}
+```
 
-```json
+## Further
+
+The following payload is sent via webhooks:
+
+```
 {
-  "type": "entry",
-  "author": {
-    "type": "card",
-    "name": "Tantek Çelik",
-    "url": "http://tantek.com/",
-    "photo": "http://tantek.com/logo.jpg"
-  },
-  "url": "http://tantek.com/2013/112/t2/milestone-show-indieweb-comments-h-entry-pingback",
-  "published": "2013-04-22T15:03:00-07:00",
-  "wm-received": "2013-04-25T17:09:33-07:00",
-  "wm-id": 900,
-  "content": {
-    "text": "Another milestone: @eschnou automatically shows #indieweb comments with h-entry sent via pingback http://eschnou.com/entry/testing-indieweb-federation-with-waterpigscouk-aaronpareckicom-and--62-24908.html",
-    "html": "Another milestone: <a href=\"https:\/\/twitter.com\/eschnou\">@eschnou<\/a> automatically shows #indieweb comments with h-entry sent via pingback <a href=\"http:\/\/eschnou.com\/entry\/testing-indieweb-federation-with-waterpigscouk-aaronpareckicom-and--62-24908.html\">http:\/\/eschnou.com\/entry\/testing-indieweb-federation-with-waterpigscouk-aaronpareckicom-and--62-24908.html<\/a>"
-  },
-  "mention-of": "https://indieweb.org/",
-  "wm-property": "mention-of",
-  "wm-private": false
+  "secret": "1234abcd",
+  "source": "http://rhiaro.co.uk/2015/11/1446953889",
+  "target": "http://aaronparecki.com/notes/2015/11/07/4/indiewebcamp",
+  "post": {
+    "type": "entry",
+    "author": {
+      "name": "Amy Guy",
+      "photo": "http://webmention.io/avatar/rhiaro.co.uk/829d3f6e7083d7ee8bd7b20363da84d88ce5b4ce094f78fd1b27d8d3dc42560e.png",
+      "url": "http://rhiaro.co.uk/about#me"
+    },
+    "url": "http://rhiaro.co.uk/2015/11/1446953889",
+    "published": "2015-11-08T03:38:09+00:00",
+    "name": "repost of http://aaronparecki.com/notes/2015/11/07/4/indiewebcamp",
+    "repost-of": "http://aaronparecki.com/notes/2015/11/07/4/indiewebcamp",
+    "wm-property": "repost-of"
+  }
 }
 ```
 
-## Roadmap
-- [x] Add fancy Vue component example
-- [ ] Expose method that talks to `https://webmention.io/api/count`, thereby getting a breakdown of the types of mentions.
+This means you can use, for example with Statamic Antlers, the following tags directly:
+
+```
+{{ mentions }} {{ wm-property }} {{ published }} {{ name }} {{ url }}
+```
+
+And you can use the following author-specific tags within an `{{ author }} ... {{ /author }}` block:
+
+```
+{{ photo }} {{ name }} {{ url }}
+```
+
+**Note** that although the `{{ name }}` and `{{ url }}` tags appear in both places, as shown in the sample payload above, they contain different pieces of information.
+
+As a live example, check out the webmentions [on this webpage](https://vhbelvadi.com/indieweb-carnival-friction) where the implementation looks something like this:
+
+```
+{{ nocache }}
+  {{ webmentions url="{{ current_url }}" }}
+    {{ if !no_results }}
+      <div>{{ mentions | length }} webmentions</div>
+      <div>
+        {{ mentions }}
+          <a href="{{ url }}" class="transition duration-500 group text-center">
+            {{ author }}
+                <img src="{{ photo }}">
+            {{ /author }}
+            <div>
+              {{ switch(
+                  ( wm-property == "in-reply-to" ) => 'replied',
+                  ( wm-property == "like-of" ) => 'liked',
+                  ( wm-property == "repost-of" ) => 'shared',
+                  ( wm-property == "bookmark-of" ) => 'bookmarked',
+                  ( wm-property == "mention-of" ) => 'discussed',
+                  ( wm-property == "rsvp" ) => 'rsvp'
+              )}}
+            </div>
+          </a>
+        {{ /mentions }}
+      </div>
+    {{ /if }}
+  {{ /webmentions }}
+{{ /nocache }}
+```
+
+The `{{ nocache }} ... {{ /nocache }}` block is not necessary if you are not using Statamic caching.
+
+***
+
+This add-on was originally created by [Matt Rothenberg](https://github.com/mattrothenberg).
