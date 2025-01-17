@@ -1,5 +1,7 @@
 # Webmentions
 
+![Statamic webmentions add-on screenshot](https://statamic.com/storage/products/UCeoKVWAur6I2IB59ppvbGTE89rZSOkUXRrVGKwo.png)
+
 [According to the W3C](https://www.w3.org/TR/webmention/) Webmentions are an open web standard for conversations and interactions across the web, a powerful building block used for a growing distributed network of peer-to-peer comments, likes, reposts, and other responses across the web.
 
 Popular across the [IndieWeb](https://indieweb.org/Webmention) as a means of enabling cross-site conversations, webmentions allow individuals to inform, and be informed by, other websites about activities and publications on websites and across social media platforms. In practice most people use webmentions in conjunction with services like [webmention.io](https://webmention.io) and [Bridgy](https://brid.gy).
