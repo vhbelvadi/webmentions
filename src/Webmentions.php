@@ -1,6 +1,6 @@
 <?php
 
-namespace Mattrothenberg\Webmentions;
+namespace Vhbelvadi\Webmentions;
 
 use GuzzleHttp\Client;
 

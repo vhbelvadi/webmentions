@@ -1,9 +1,9 @@
 {
-  "name": "mattrothenberg/webmentions",
+  "name": "vhbelvadi/webmentions",
   "type": "statamic-addon",
   "autoload": {
     "psr-4": {
-      "Mattrothenberg\\Webmentions\\": "src"
+      "Vhbelvadi\\Webmentions\\": "src"
     }
   },
   "extra": {
@@ -13,11 +13,11 @@
     },
     "laravel": {
       "providers": [
-        "Mattrothenberg\\Webmentions\\ServiceProvider"
+        "Vhbelvadi\\Webmentions\\ServiceProvider"
       ]
     }
   },
   "require": {
-    "guzzlehttp/guzzle": "~6.0"
+    "guzzlehttp/guzzle": "^7.2"
   }
 }
