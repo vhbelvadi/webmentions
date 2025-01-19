@@ -32,7 +32,7 @@ On your statamic site, use the `{{ webmentions }}` tag passing the appropriate U
 {{ webmentions url={{ current_url}} }}
 ```
 
-## Widget (New!)
+## Widget (New in v2!)
 
 This add-on provides a control panel widget. There are two steps to enable it, both standard Statamic procedures:
 
@@ -66,7 +66,7 @@ If you already have a few widgets set up, you can of course skip the `'widgets =
 
 Rather than display a feed as is, widget offers a few links: a link to the webmention itself, a link to your post with which the webmention interacts, and a link to edit that post for convenience if you should need it.
 
-The recommended `'width'` value is `50` although the widget works at any other width.
+The recommended `'width'` value is `50` although the widget works at any other width. The widget will display a helpful blue **NEW** marker if you have any webmentions within the last 3 days.
 
 ## Further
 
