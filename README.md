@@ -1,13 +1,13 @@
 # Webmentions
 
-![Statamic webmentions add-on screenshot](https://statamic.com/storage/products/UCeoKVWAur6I2IB59ppvbGTE89rZSOkUXRrVGKwo.png)
+![Statamic webmentions overview](https://statamic.com/storage/products/6jA6cGd6wJspdo4KySTA6edMlRjigYs0vxxxvBir.png)
 
 [According to the W3C](https://www.w3.org/TR/webmention/) Webmentions are an open web standard for conversations and interactions across the web, a powerful building block used for a growing distributed network of peer-to-peer comments, likes, reposts, and other responses across the web.
 
 Popular across the [IndieWeb](https://indieweb.org/Webmention) as a means of enabling cross-site conversations, webmentions allow individuals to inform, and be informed by, other websites about activities and publications on websites and across social media platforms. In practice most people use webmentions in conjunction with services like [webmention.io](https://webmention.io) and [Bridgy](https://brid.gy).
 
 ***
-**Jump to section** • [Installation](#installation) • [Templating](#templating) • [Widget set-up](#widget-new-in-v2) • [Troubleshooting](#troubleshooting) • [Further](#further) (includes [an example set-up](#example-set-up))
+**Jump to section** • [Installation](https://github.com/vhbelvadi/webmentions#installation) • [Templating](#templating) • [Widget set-up](#widget-new-in-v2) • [Troubleshooting](#troubleshooting) • [Further](#further) (includes [an example set-up](#example-set-up))
 ***
 
 ## Installation
@@ -37,6 +37,8 @@ On your statamic site, use the `{{ webmentions }}` tag passing the appropriate U
 ```
 
 This add-on also provides a `length` modifier that outputs the number of webmentions for the given url. For this and other template tags, see [the example set-up](#example-set-up).
+
+![Statamic webmentions add-on screenshot](https://statamic.com/storage/products/UCeoKVWAur6I2IB59ppvbGTE89rZSOkUXRrVGKwo.png)
 
 ## Widget (New in v2!)
 
