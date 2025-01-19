@@ -7,7 +7,7 @@
 Popular across the [IndieWeb](https://indieweb.org/Webmention) as a means of enabling cross-site conversations, webmentions allow individuals to inform, and be informed by, other websites about activities and publications on websites and across social media platforms. In practice most people use webmentions in conjunction with services like [webmention.io](https://webmention.io) and [Bridgy](https://brid.gy).
 
 ***
-**Jump to section** • [Installation](https://github.com/vhbelvadi/webmentions#installation) • [Templating](#templating) • [Widget set-up](#widget-new-in-v2) • [Troubleshooting](#troubleshooting) • [Further](#further) (includes [an example set-up](#example-set-up))
+**Jump to section** • [Installation](https://github.com/vhbelvadi/webmentions#installation) • [Templating](https://github.com/vhbelvadi/webmentions#templating) • [Widget set-up](https://github.com/vhbelvadi/webmentions#widget-new-in-v2) • [Troubleshooting](https://github.com/vhbelvadi/webmentions#troubleshooting) • [Further](https://github.com/vhbelvadi/webmentions#further) (includes [an example set-up](https://github.com/vhbelvadi/webmentions#example-set-up))
 ***
 
 ## Installation
