@@ -6,6 +6,10 @@
 
 Popular across the [IndieWeb](https://indieweb.org/Webmention) as a means of enabling cross-site conversations, webmentions allow individuals to inform, and be informed by, other websites about activities and publications on websites and across social media platforms. In practice most people use webmentions in conjunction with services like [webmention.io](https://webmention.io) and [Bridgy](https://brid.gy).
 
+***
+**Jump to section** • [Installation](#installation) • [Templating](#templating) • [Widget set-up](#widget-new-in-v2) • [Troubleshooting](#troubleshooting) • [Further](#further) (includes [an example set-up](#example-set-up))
+***
+
 ## Installation
 
 This add-on is for websites built with [Statamic](https://statamic.com).
@@ -32,11 +36,13 @@ On your statamic site, use the `{{ webmentions }}` tag passing the appropriate U
 {{ webmentions url={{ current_url}} }}
 ```
 
+This add-on also provides a `length` modifier that outputs the number of webmentions for the given url. For this and other template tags, see [the example set-up](#example-set-up).
+
 ## Widget (New in v2!)
 
 This add-on provides a control panel widget. There are two steps to enable it, both standard Statamic procedures:
 
-**Variable in ENV**
+### Save your API key
 
 Head to your [webmention.io settings](https://webmention.io/settings) and copy your API key.
 
@@ -46,7 +52,7 @@ Next, add a value your `.env` file like so:
 WEBMENTION_TOKEN=<paste-your-API-key-here>
 ```
 
-***Set up your widget***
+### Set up your widget
 
 In the config file located at `config/statamic/cp.php` add your widget:
 
@@ -67,6 +73,16 @@ If you already have a few widgets set up, you can of course skip the `'widgets =
 Rather than display a feed as is, widget offers a few links: a link to the webmention itself, a link to your post with which the webmention interacts, and a link to edit that post for convenience if you should need it.
 
 The recommended `'width'` value is `50` although the widget works at any other width. The widget will display a helpful blue **NEW** marker if you have any webmentions within the last 3 days.
+
+## Troubleshooting
+
+### Blank page following widget set-up
+
+**If you set up your widget locally** and pushed to your production server please run `composer update`.
+
+**If you set up your widget on production**—you daredevil—or if you did so locally but forgot to add your API key, check that your `.env` file has the proper API set-up.
+
+*Got any suggestions for common problems? Please [let me know](mailto:hello@vhbelvadi.com) or edit this section and submit a pull request.*
 
 ## Further
 
@@ -106,6 +122,8 @@ And you can use the following author-specific tags within an `{{ author }} ... {
 ```
 
 **Note** that although the `{{ name }}` and `{{ url }}` tags appear in both places, as shown in the sample payload above, they contain different pieces of information.
+
+### Example set-up
 
 As a live example, check out the webmentions [on this webpage](https://vhbelvadi.com/indieweb-carnival-friction) where the implementation looks something like this:
 
