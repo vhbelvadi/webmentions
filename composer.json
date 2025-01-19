@@ -1,5 +1,11 @@
 {
   "name": "vhbelvadi/webmentions",
+  "keywords": [
+        "statamic",
+        "webmention",
+        "widget",
+        "tag"
+    ],
   "type": "statamic-addon",
   "autoload": {
     "psr-4": {
@@ -18,6 +24,7 @@
     }
   },
   "require": {
-    "guzzlehttp/guzzle": "^7.2"
+    "guzzlehttp/guzzle": "^7.2",
+    "simplepie/simplepie": "^1.5"
   }
 }

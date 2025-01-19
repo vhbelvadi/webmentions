@@ -32,6 +32,42 @@ On your statamic site, use the `{{ webmentions }}` tag passing the appropriate U
 {{ webmentions url={{ current_url}} }}
 ```
 
+## Widget (New!)
+
+This add-on provides a control panel widget. There are two steps to enable it, both standard Statamic procedures:
+
+**Variable in ENV**
+
+Head to your [webmention.io settings](https://webmention.io/settings) and copy your API key.
+
+Next, add a value your `.env` file like so:
+
+```
+WEBMENTION_TOKEN=<paste-your-API-key-here>
+```
+
+***Set up your widget***
+
+In the config file located at `config/statamic/cp.php` add your widget:
+
+```
+'widgets' => [ 
+        [ 
+            'type' => 'webmentions',
+            'width' => 50,
+            'limit' => 7, // optional
+        ], 
+    ],
+```
+
+If you already have a few widgets set up, you can of course skip the `'widgets => [ ],` block and just add the `webmentions` block for this add-on. The `'limit'` value is optional and defaults to 7 if not provided i.e. the widget will display the seven latest webmentions.
+
+![Webmentions widget](https://statamic.com/storage/products/EGkG8jBZaBHqydUv7weZROKklhJgf0TDAAY7jNkP.png)
+
+Rather than display a feed as is, widget offers a few links: a link to the webmention itself, a link to your post with which the webmention interacts, and a link to edit that post for convenience if you should need it.
+
+The recommended `'width'` value is `50` although the widget works at any other width.
+
 ## Further
 
 The following payload is sent via webhooks:
