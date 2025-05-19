@@ -1,6 +1,6 @@
 # Webmentions
 
-![Statamic webmentions overview](https://statamic.com/storage/products/B84pQP3GFy0H8VgGA1jRc0dai9SeCH9QlFyg0Sl0.png)
+![Statamic webmentions overview](https://statamic.com/storage/products/5G37zMEu2lHAyrtaz5ecDefjVQzdQ99JLJEUoQrc.jpg)
 
 [According to the W3C](https://www.w3.org/TR/webmention/) Webmentions are an open web standard for conversations and interactions across the web, a powerful building block used for a growing distributed network of peer-to-peer comments, likes, reposts, and other responses across the web.
 
