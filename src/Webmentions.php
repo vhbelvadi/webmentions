@@ -28,15 +28,17 @@ class Webmentions extends \Statamic\Tags\Tags
         return $this->fetch('/api/count');
     }
     
-    private function fetch(string $endpoint): array
+    private function fetch(string $endpoint): ?array
     {
         $client = new Client([
             'base_uri' => 'https://webmention.io/'
         ]);
-        $res = $client->request('GET', $endpoint, [
-            'query' => ['target' => $this->params->get('url')],
-            'http_errors' => false
-        ]);
+        if (!empty($endpoint)) {
+            $res = $client->request('GET', $endpoint, [
+                'query' => ['target' => $this->params->get('url')],
+                'http_errors' => false
+            ]);
+        }
 
         return json_decode($res->getBody(), true);
     }
