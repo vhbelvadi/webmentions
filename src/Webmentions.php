@@ -15,7 +15,7 @@ class Webmentions extends \Statamic\Tags\Tags
         }
 
         $json = $this->fetch('/api/mentions.jf2');
-        $children = $json['children'];
+        $children = is_null($json) ? 0 : $json['children'];
         return $children ? ['mentions' => $children] : [];
     }
 
