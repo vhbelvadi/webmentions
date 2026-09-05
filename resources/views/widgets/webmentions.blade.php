@@ -6,7 +6,7 @@
             <h2>Recent webmentions</h2>
         </div>
         <!-- If the latest webmention is less than 3 days old say 'New' -->
-        @if ( time() - strtotime( $mentions[0]->get_date()) < 259200 )
+        @if ( $mentions && time() - strtotime( $mentions[0]->get_date()) < 259200 )
             <strong class="text-blue uppercase">New</strong>
         @endif
     </header>
