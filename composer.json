@@ -6,6 +6,14 @@
         "widget",
         "tag"
     ],
+    "authors": [
+      {
+        "name": "V.H. Belvadi",
+        "email": "hello@vhbelvadi.com",
+        "homepage": "https://vhbelvadi.com",
+        "role": "Developer"
+      }
+    ],
   "type": "statamic-addon",
   "autoload": {
     "psr-4": {
@@ -24,7 +32,10 @@
     }
   },
   "require": {
+    "statamic/cms": "^5.0 || ^6.0",
     "guzzlehttp/guzzle": "^7.2",
     "simplepie/simplepie": "^1.5"
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
